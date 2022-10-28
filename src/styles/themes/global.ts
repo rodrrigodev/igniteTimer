@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
 body{
     background-color: ${(porps) => porps.theme['gray-900']};
     color: ${(porps) => porps.theme['gray-300']};
+    -webkit-font-smoothing: antialiased;
 }
 
 body, input, textarea, button{
