@@ -30,7 +30,12 @@ export function Home() {
         }
     })
 
-const { handleSubmit, watch, formState, /*reset*/ } = newCycleForm
+    const { handleSubmit, watch, formState, reset } = newCycleForm
+
+    function handleCreateNewCycle(data: NewCycleFormData) {
+        createNewCycle(data)
+        reset()
+    }
 
 
     const task = watch('task') //watch is similiar a onchange function
@@ -38,12 +43,12 @@ const { handleSubmit, watch, formState, /*reset*/ } = newCycleForm
 
     return (
         <HomeContainer>
-            <form onSubmit={handleSubmit(createNewCycle)} action="">
+            <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
 
-                    <FormProvider {...newCycleForm}>
+                <FormProvider {...newCycleForm}>
                     <NewCycleForm />
-                    </FormProvider>
-                    <Countdown />
+                </FormProvider>
+                <Countdown />
 
                 {activeCycle ? (
                     <StopCountDownButton onClick={interruptCurrentCycle} type="button">
